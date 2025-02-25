@@ -42,7 +42,6 @@ public class ScoreManager : MonoBehaviour
 
     public void ReturnToMap()
     {
-        // Remplacez "MapScreen" par le nom réel de la scène de la carte
         SceneManager.LoadScene("MapScreen");
     }
 }

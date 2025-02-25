@@ -1,4 +1,3 @@
-// filepath: /Assets/Scripts/CameraFeedInitializer.cs
 using UnityEngine;
 
 public class CameraFeedInitializer : MonoBehaviour

@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 namespace Niantic.Lightship.Maps.Samples.GameSample
 {
-    /// <summary>
-    /// UI menu item to show buildings to be built, checks if there is enough resources to build this structure
-    /// </summary>
     internal class MapGameBuildingMenuItem : MonoBehaviour
     {
         [SerializeField]

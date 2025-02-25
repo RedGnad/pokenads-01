@@ -7,10 +7,6 @@ using UnityEngine;
 
 namespace Niantic.Lightship.Maps.Samples.GameSample
 {
-    /// <summary>
-    /// Simple UI controller for the MapGame, it switches between a couple of screens and reacts to
-    /// various button presses and keeps resources UI updated
-    /// </summary>
     internal class MapGameUIController : MonoBehaviour
     {
         [SerializeField]
@@ -55,7 +51,6 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
         [SerializeField]
         private TMP_Text _errorText;
 
-        // keeps track if the player has already won or not
         private bool _hasPlayerWon;
 
         private void Start()
@@ -119,7 +114,6 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
 
         public void OnBuildButtonPressed()
         {
-            // toggle the build menu
             _buildMenu.SetActive(!_buildMenu.activeInHierarchy);
         }
 
@@ -141,7 +135,6 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
             _placeStructureScreen.SetActive(false);
             _buildMenuButton.SetActive(true);
 
-            // only show winning screen on first placement of stronghold
             if (!_hasPlayerWon && structureType == MapGameState.StructureType.Stronghold)
             {
                 _hasPlayerWon = true;

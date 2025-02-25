@@ -7,11 +7,6 @@ using UnityEngine;
 
 namespace Niantic.Lightship.Maps.Samples.GameSample
 {
-    /// <summary>
-    /// This singleton holds the current values for resources and tracks placed buildings
-    /// It also updates the UI on resource values, which
-    /// TODO: Save state so resources and structure and persistent
-    /// </summary>
     internal class MapGameState : MonoBehaviour
     {
         public static MapGameState Instance { get; private set; }
@@ -95,9 +90,6 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
 
         public void StructureBuilt(LatLng coordinates, StructureType structureType)
         {
-            // TODO: Save structure placement so that it is persist on reloading the application
-
-            // spend resources to make structure
             var structureCost = _structureCosts[(int)structureType];
             SpendResource(structureCost.Resource, structureCost.Amount);
 

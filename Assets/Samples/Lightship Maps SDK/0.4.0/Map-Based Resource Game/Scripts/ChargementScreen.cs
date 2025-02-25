@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class LoadingScreenManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject loadingScreenPanel; // Assignez votre panneau de chargement dans l'inspecteur
+    private GameObject loadingScreenPanel;
 
-    // Optionnel : durée minimale d'affichage de l'écran de chargement
     [SerializeField]
     private float minimumLoadingTime = 3f;
 
@@ -22,7 +21,6 @@ public class LoadingScreenManager : MonoBehaviour
 
     private IEnumerator HideLoadingScreen()
     {
-        // Ici, vous pouvez insérer des conditions pour attendre la fin de toutes les initialisations (ex.: vos spawns, chargement de la map, etc.)
         yield return new WaitForSeconds(minimumLoadingTime);
         loadingScreenPanel.SetActive(false);
     }

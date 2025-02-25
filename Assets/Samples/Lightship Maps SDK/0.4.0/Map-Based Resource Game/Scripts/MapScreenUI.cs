@@ -3,7 +3,7 @@ using TMPro;
 
 public class MapScreenUI : MonoBehaviour
 {
-    public TextMeshProUGUI generalScoreText;  // Ou [SerializeField] private TextMeshProUGUI generalScoreText;
+    public TextMeshProUGUI generalScoreText;
 
     void Start()
     {

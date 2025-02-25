@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Si aucune instance n'existe, on la définit et on la rend persistante
         if (Instance == null)
         {
             Instance = this;
@@ -19,10 +18,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Méthode pour ajouter des points au score général
     public void AddScore(int points)
     {
         generalScore += points;
-        Debug.Log("Score général mis à jour : " + generalScore);
     }
 }

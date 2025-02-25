@@ -4,13 +4,12 @@ using UnityEngine;
 public class ParkFeatureSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject parkFeaturePrefab; // Assignez votre prefab dans l'inspecteur
+    private GameObject parkFeaturePrefab;
+    [SerializeField]
+    private int numberOfFeatures = 10;
 
     [SerializeField]
-    private int numberOfFeatures = 10; // Nombre de features à instancier
-
-    [SerializeField]
-    private float spawnRadius = 50f; // Rayon autour du joueur pour le spawn
+    private float spawnRadius = 50f;
 
     [System.Serializable]
     public class FeatureData
@@ -19,7 +18,6 @@ public class ParkFeatureSpawner : MonoBehaviour
         public bool collected;
     }
 
-    // Liste statique pour conserver les données des features durant la session
     private static List<FeatureData> spawnedFeatures = new List<FeatureData>();
 
     void Start()
@@ -43,7 +41,6 @@ public class ParkFeatureSpawner : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
         {
-            Debug.LogWarning("Player not found in the scene.");
             return;
         }
 
@@ -51,7 +48,6 @@ public class ParkFeatureSpawner : MonoBehaviour
 
         for (int i = 0; i < numberOfFeatures; i++)
         {
-            // Génère une position aléatoire dans un cercle autour du joueur
             Vector2 randomPoint = Random.insideUnitCircle * spawnRadius;
             Vector3 spawnPos = new Vector3(playerPos.x + randomPoint.x, playerPos.y, playerPos.z + randomPoint.y);
 
@@ -64,10 +60,9 @@ public class ParkFeatureSpawner : MonoBehaviour
         }
     }
 
-    // Ajoutez cette méthode pour marquer une feature comme collectée
     public static void MarkFeatureCollected(Vector3 featurePosition)
     {
-        float tolerance = 1.0f; // Tolérance pour la comparaison de positions
+        float tolerance = 1.0f;
         foreach (FeatureData feature in spawnedFeatures)
         {
             if (!feature.collected && Vector3.Distance(feature.position, featurePosition) < tolerance)

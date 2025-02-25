@@ -9,7 +9,6 @@ namespace MyGame.ReactionScreen
         [SerializeField]
         private GameObject loadingScreenPanel; // Panneau de chargement assigné dans l'inspecteur
 
-        // Valeur par défaut pour réinitialiser si besoin
         [SerializeField]
         private float defaultLoadingTime = 3f;
 
@@ -17,7 +16,6 @@ namespace MyGame.ReactionScreen
 
         void Awake()
         {
-            // Récupère la durée de chargement configurée globalement
             currentLoadingTime = SceneTransitionData.LoadingTime;
         }
 
@@ -35,7 +33,6 @@ namespace MyGame.ReactionScreen
             yield return new WaitForSeconds(currentLoadingTime);
             loadingScreenPanel.SetActive(false);
             
-            // Réinitialise la durée par défaut pour les transitions suivantes
             SceneTransitionData.LoadingTime = defaultLoadingTime;
         }
     }
