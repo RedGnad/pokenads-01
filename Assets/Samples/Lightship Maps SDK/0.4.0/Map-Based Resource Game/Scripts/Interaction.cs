@@ -22,7 +22,7 @@ public class Interaction : MonoBehaviour
 
     void Update()
     {
-        if (score >= 10)
+        if (score >= 20)
             return;
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -44,25 +44,22 @@ public class Interaction : MonoBehaviour
             if (hit.transform == transform)
             {
                 score++;
-                if(scoreText != null)
+                if (scoreText != null)
                 {
                     scoreText.text = "Score : " + score;
                 }
-                
-                if (score >= 10)
+
+                if (score >= 20)
                 {
-                    if(GameManager.Instance != null)
+                    if (GameManager.Instance != null)
                     {
-                        GameManager.Instance.AddScore(10);
+                        GameManager.Instance.AddScore(20);
                     }
                     if (retourButton != null)
                     {
                         retourButton.SetActive(true);
                     }
-                    if (myCollider != null)
-                    {
-                        myCollider.enabled = false;
-                    }
+                    gameObject.SetActive(false);
                 }
 
                 if (particleSystemPrefab != null)

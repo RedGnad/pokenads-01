@@ -14,7 +14,7 @@ public class MapGameUI : MonoBehaviour
     {
         if (generalScoreText != null && GameManager.Instance != null)
         {
-            generalScoreText.text = "Score général : " + GameManager.Instance.generalScore;
+            generalScoreText.text = "Nads : " + GameManager.Instance.generalScore;
         }
     }
 
