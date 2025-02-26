@@ -7,17 +7,22 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
-    [SerializeField] private TMP_Text scoreText; // Assignez le TextMeshProUGUI pour afficher le score
-    [SerializeField] private Button returnButton;  // Assignez le bouton de retour
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private Button returnButton;
 
     private int score = 0;
 
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
+        {
             Destroy(gameObject);
+        }
 
         UpdateScoreUI();
 
@@ -42,6 +47,6 @@ public class ScoreManager : MonoBehaviour
 
     public void ReturnToMap()
     {
-        SceneManager.LoadScene("MapScreen");
+        SceneManager.LoadScene("GameSample");
     }
 }

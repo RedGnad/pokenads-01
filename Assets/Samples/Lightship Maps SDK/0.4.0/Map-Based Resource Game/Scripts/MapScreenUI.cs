@@ -1,15 +1,25 @@
 using UnityEngine;
 using TMPro;
 
-public class MapScreenUI : MonoBehaviour
+public class MapGameUI : MonoBehaviour
 {
     public TextMeshProUGUI generalScoreText;
 
-    void Start()
+    void OnEnable()
+    {
+        RefreshScore();
+    }
+
+    void RefreshScore()
     {
         if (generalScoreText != null && GameManager.Instance != null)
         {
             generalScoreText.text = "Score général : " + GameManager.Instance.generalScore;
         }
+    }
+
+    public void OnReturnToMapScreen()
+    {
+        RefreshScore();
     }
 }

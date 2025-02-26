@@ -17,6 +17,7 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
 
         public void ShowSecondScreen()
         {
+            SceneTransitionData.LoadingTime = 1f;
             SceneManager.LoadScene("CameraFeedScene");
         }
 

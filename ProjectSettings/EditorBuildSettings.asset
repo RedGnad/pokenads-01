@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameSample.unity
+    path: Assets/Scenes/MapScreen.unity
     guid: 1c6ca86493a854ed4a5f5ee7605f9991
   - enabled: 1
     path: Assets/Scenes/CameraFeedScene.unity
