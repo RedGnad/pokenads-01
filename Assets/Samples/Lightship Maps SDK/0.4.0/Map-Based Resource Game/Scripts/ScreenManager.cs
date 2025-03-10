@@ -17,15 +17,24 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
 
         public void ShowSecondScreen()
         {
-            SceneTransitionData.LoadingTime = 1f;
-            SceneManager.LoadScene("CameraFeedScene");
+            if (ARCompatibilityChecker.IsARCoreSupported)
+            {
+                SceneTransitionData.LoadingTime = 1f;
+                SceneManager.LoadScene("CameraFeedScene");
+            }
+            else
+            {
+                Debug.Log("ARCore non supporté. Redirection vers l'écran sans AR.");
+                SceneTransitionData.LoadingTime = 1f;
+                SceneManager.LoadScene("NonCameraFeedScene"); // Remplacez par le nom de votre scène sans AR
+            }
         }
 
         public void ReturnToMap()
         {
             Debug.Log("ReturnToMap appelée");
             SceneTransitionData.LoadingTime = 1f;
-            SceneManager.LoadScene("MapScreenScene");
+            SceneManager.LoadScene("MapScreen");
         }
 
         public void HideSecondScreen()

@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CameraFeedScene.unity
     guid: e58b2e437204f4d64bf7fb57afcafb42
+  - enabled: 1
+    path: Assets/Scenes/NonCameraFeedScene.unity
+    guid: d903be419bd5540cfb6773d916a4ddb3
   m_configObjects:
     Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: ed9866282f88442869a1e85fd97518a8, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 1bd059ac38cba4b41ba05c7bc62d1313, type: 2}

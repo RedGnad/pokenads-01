@@ -5,7 +5,8 @@
         "Niantic.Lightship.Maps",
         "Niantic.Lightship.Maps.Samples.Common",
         "Niantic.Lightship.Maps.SampleAssets",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Unity.XR.ARFoundation"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -29,6 +29,15 @@
       },
       "hash": "d2589e27c989aaed94f0df0e0c593974f86c7bf3"
     },
+    "com.tools.webglthreadingpatcher": {
+      "version": "https://github.com/VolodymyrBS/WebGLThreadingPatcher.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "nuget.mono-cecil": "0.1.6-preview"
+      },
+      "hash": "c2f3628a028373afc8c66e443f7ce21bcb613a47"
+    },
     "com.unity.burst": {
       "version": "1.8.17",
       "depth": 1,
@@ -67,6 +76,16 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.connect.share": {
+      "version": "4.2.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0",
+        "com.unity.settings-manager": "1.0.2"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -75,7 +94,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
-      "version": "1.0.6",
+      "version": "2.0.3",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
@@ -138,7 +157,7 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -197,7 +216,7 @@
     },
     "com.unity.settings-manager": {
       "version": "2.0.1",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -212,11 +231,11 @@
       }
     },
     "com.unity.test-framework": {
-      "version": "1.1.33",
+      "version": "1.4.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.ext.nunit": "2.0.3",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
@@ -374,6 +393,17 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.utilities.async": {
+      "version": "https://github.com/RageAgainstThePixel/com.utilities.async.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0",
+        "com.unity.test-framework": "1.4.2",
+        "com.unity.nuget.mono-cecil": "1.11.4"
+      },
+      "hash": "43d44da4100389e5d3d2079d23ade8605887ef36"
+    },
     "io.chainsafe.web3-unity": {
       "version": "https://github.com/ChainSafe/web3.unity.git?path=/Packages/io.chainsafe.web3-unity",
       "depth": 0,
@@ -383,6 +413,14 @@
         "com.unity.textmeshpro": "3.0.6"
       },
       "hash": "0550a894661f92463f567db9b8c2da721abe61cd"
+    },
+    "nuget.mono-cecil": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.nuget.mono-cecil": "1.10.1"
+      }
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
