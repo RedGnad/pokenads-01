@@ -1,5 +1,5 @@
 using UnityEngine;
-using FT = Niantic.Lightship.Maps.Samples.GameSample.FloatingText.FloatingText;
+using TMPro;
 
 namespace Niantic.Lightship.Maps.Samples.GameSample
 {
@@ -9,41 +9,41 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
 
         [SerializeField]
         private GameObject floatingTextPrefab;
+
+        // Optionnel : un prefab spécifique pour "too far"
+        [SerializeField]
+        private GameObject tooFarTextPrefab;
         
         [SerializeField]
-        private bool enableFloatingText = false;
+        private bool enableFloatingText = true;
+        
         private void Awake()
         {
             Instance = this;
         }
 
+        // Affiche 'text' à la position indiquée et détruit le cloné après 2 secondes
         public void ShowText(string text, Vector3 position)
         {
-            
             if (!enableFloatingText)
-            {
                 return;
-            }
             
-            GameObject clone = Instantiate(floatingTextPrefab, position, Quaternion.identity);
-            if (clone != null)
+            GameObject prefabToInstantiate = floatingTextPrefab;
+            if (text == "too far" && tooFarTextPrefab != null)
             {
-                Debug.Log("[FloatingTextManager] Prefab ok");
-            }
-            else
-            {
-                return;
+                prefabToInstantiate = tooFarTextPrefab;
             }
 
-            FT floatText = clone.GetComponent<FT>();
-            if (floatText != null)
+            if (prefabToInstantiate == null)
+                return;
+            
+            GameObject instance = Instantiate(prefabToInstantiate, position, Quaternion.identity);
+            TMP_Text tmp = instance.GetComponentInChildren<TMP_Text>();
+            if (tmp != null)
             {
-                floatText.SetText(text);
+                tmp.text = text;
             }
-            else
-            {
-                Debug.LogError("[FloatingTextManager] Le composant FloatingText n'a pas été trouvé sur le prefab");
-            }
+            Destroy(instance, 2f);
         }
     }
 }

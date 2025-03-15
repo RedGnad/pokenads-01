@@ -1,5 +1,3 @@
-// Copyright 2022 Niantic, Inc. All Rights Reserved.
-
 using System;
 using Niantic.Lightship.Maps.Core.Coordinates;
 using Niantic.Lightship.Maps.MapLayers.Components;
@@ -89,27 +87,24 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
                 case MapGameState.StructureType.Sawmill:
                     _sawmillSpawner.PlaceInstance(structureLatLng, rotation);
                     break;
-
                 case MapGameState.StructureType.StoneMason:
                     _stoneMasonSpawner.PlaceInstance(structureLatLng, rotation);
                     MapGameState.Instance.EnableResourceProduction(MapGameState.ResourceType.Stone, true);
                     break;
-
                 case MapGameState.StructureType.Stronghold:
                     _strongholdSpawner.PlaceInstance(structureLatLng, rotation);
                     break;
-
                 default:
                     throw new ArgumentOutOfRangeException(nameof(_placingStructureType));
             }
 
             MapGameState.Instance.StructureBuilt(structureLatLng, _placingStructureType);
-            
             _placingStructure = false;
         }
 
         private void CheckForInteractableTouch(Vector3 touchPosition)
         {
+            // Obtenir le rayon à partir du point de l'écran
             var touchRay = _mapCamera.ScreenPointToRay(touchPosition);
 
             if (!Physics.Raycast(touchRay, out var hitInfo))
@@ -117,6 +112,7 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
                 return;
             }
 
+            // Vérifier si l'objet touché possède le script MapGameResourceFeature
             var hitResourceItem = hitInfo.collider.GetComponent<MapGameResourceFeature>();
             if (hitResourceItem == null)
             {
@@ -128,13 +124,20 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
                 return;
             }
 
+            // Appeler la méthode GainResources() et récupérer le montant gagné
             int amount = hitResourceItem.GainResources();
             MapGameState.Instance.AddResource(hitResourceItem.ResourceType, amount);
-            var floatingTextPosition = hitInfo.point + Vector3.up * 20.0f;
-            var forward = floatingTextPosition - _mapCamera.transform.position;
-            var rotation = Quaternion.LookRotation(forward, Vector3.up);
-            var floatText = Instantiate(_floatingTextPrefab, floatingTextPosition, rotation);
-            floatText.SetText($"+{amount} {hitResourceItem.ResourceType}");
+
+            // Si le joueur est à moins de 30f, amount sera positif et nous n'affichons aucun texte.
+            // Sinon, si aucun gain n'est effectué (amount == 0), on affiche "Come closer"
+            if (amount == 0)
+            {
+                var floatingTextPosition = hitInfo.point + Vector3.up * 20.0f;
+                var forward = floatingTextPosition - _mapCamera.transform.position;
+                var rotation = Quaternion.LookRotation(forward, Vector3.up);
+                var floatText = Instantiate(_floatingTextPrefab, floatingTextPosition, rotation);
+                floatText.SetText("Come closer");
+            }
         }
     }
 }
